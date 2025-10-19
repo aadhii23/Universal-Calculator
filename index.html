@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Unit Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateUnits() {
+            var category = document.getElementById("category").value;
+            var units = {
+                "mass": {"milli": "Milligrams", "centi": "Centigrams", "deci": "Decigrams", "": "Grams", "deka": "Dekagrams", "hecto": "Hectograms", "kilo": "Kilograms"},
+                "length": {"milli": "Millimeters", "centi": "Centimeters", "deci": "Decimeters", "": "Meters", "deka": "Dekameters", "hecto": "Hectometers", "kilo": "Kilometers"},
+                "volume": {"milli": "Milliliters", "centi": "Centiliters", "deci": "Deciliters", "": "Liters"},
+                "time": {"seconds": "Seconds", "minutes": "Minutes", "hours": "Hours", "days": "Days"},
+                "temperature": {"celsius": "Celsius", "fahrenheit": "Fahrenheit", "kelvin": "Kelvin"}
+            };
+
+            var unitIn = document.getElementById("unit_in");
+            var unitOut = document.getElementById("unit_out");
+
+            unitIn.innerHTML = "";
+            unitOut.innerHTML = "";
+
+            Object.keys(units[category]).forEach(key => {
+                unitIn.innerHTML += `<option value="${key}">${units[category][key]}</option>`;
+                unitOut.innerHTML += `<option value="${key}">${units[category][key]}</option>`;
+            });
+        }
+    </script>
+</head>
+<body onload="updateUnits()">
+    <div class="container">
+        <h1>Universal Unit Converter</h1>
+        <form method="post">
+            <select id="category" name="category" onchange="updateUnits()">
+                <option value="mass">Mass</option>
+                <option value="length">Length</option>
+                <option value="volume">Volume</option>
+                <option value="time">Time</option>
+                <option value="temperature">Temperature</option>
+            </select>
+            <input type="number" name="value" placeholder="Enter value" required>
+            <select id="unit_in" name="unit_in"></select>
+            <select id="unit_out" name="unit_out"></select>
+            <button type="submit">Convert</button>
+        </form>
+        {% if converted is not none %}
+            <p>Converted Value: {{ converted }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

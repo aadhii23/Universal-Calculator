@@ -1,0 +1,97 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: url(1.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* Glassy Container */
+.container {
+    width: 50%;
+    margin: 5% auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.4); /* Dark transparent glass */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.6);
+    color: #fff; /* White text inside */
+}
+
+/* Inputs, Selects, and Buttons */
+input, select, button {
+    padding: 12px;
+    margin: 12px 0;
+    width: 80%;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+}
+
+/* Placeholders */
+input::placeholder {
+    color: #555;
+}
+
+/* Buttons */
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Focus styles */
+input:focus, select:focus, button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #28a745;
+    border-color: #28a745;
+}
+
+/* Headings and Paragraphs */
+h1, h2, p {
+    color: #fff;
+}
+
+/* Output Display */
+.output {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Brighter for contrast */
+    border-left: 5px solid #28a745;
+    border-radius: 10px;
+    color: #000;
+    font-size: 18px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 85%;
+        padding: 20px;
+    }
+
+    input, select, button {
+        width: 95%;
+    }
+
+    .output {
+        width: 90%;
+    }
+}
